@@ -1,0 +1,151 @@
+/* BASE */
+* {}
+
+/* HEADER */
+header {}
+
+.logo {}
+
+#app__title {}
+
+.date__display {}
+
+.day {}
+
+.full__date {}
+
+.container {}
+
+
+/* SIDEBAR */
+.sidebar {}
+
+.profile{}
+
+.profile__img {}
+
+.profile__name {}
+
+.profile__email {}
+
+.sidebar__buttons {}
+
+.sidebar__button {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar__button:hover {
+    background-color: rgba(138, 43, 226, 0.2);
+}
+
+.sidebar__button:active {
+    background-color: rgb(138, 43, 226);
+}
+
+/* MAIN CONTENT */
+.main__content {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* no matter what they start from the top */
+    overflow-y: auto; /* no matter what we're going to be able to scroll up and down */
+}
+
+.habit__tracker {
+    max-width: 600px;
+    width: 100%;
+    padding: 0;
+}
+
+.tracker__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(138, 43, 226);
+}
+
+.progress__section {
+    background-color: rgb(35, 35, 35);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.progress__bar {
+    background-color: rgb(60, 60, 60);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden; /* no matter what we won't be able to see if it extends outward */
+    margin: 10px 0; /* 10px up and down 0 left and right */
+}
+
+.progress__fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(138, 43, 226), rgb(180, 80, 255)); /* filling up the bar in a gradient of colors */
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.habits__container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.habit__item {
+    background-color: rgb(35, 35, 35);
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.habit__item:hover {
+    background-color: rgb(45, 45, 45);
+}
+
+.habit__item.completed {
+    background-color: rgba(138, 43, 226, 0.2);
+    border-left: 4px solid rgb(138, 43, 226);
+}
+
+.habit__checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(138, 43, 226);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.habit__checkbox.checked {
+    background-color: rgb(138, 43, 226);
+    color: white;
+}
+
+.habit__emoji {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.habit__text {
+    flex-grow: 1; /* whenever we are entering our own things this will help it fit no matter what */
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.habit__item.completed .habit__text { /* targeting the text as completed */
+    text-decoration: line-through;
+    opacity: 0.7;
+}
