@@ -1,53 +1,144 @@
-/* BASE */
-* {}
+@import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Savate:ital,wght@0,200..900;1,200..900&display=swap");
+
+/* BASIC RESET AND FONTS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gabarito", sans-serif; /* Using Gabarito as the primary font */
+}
+
+body,
+html {
+  height: 100%;
+  overflow: hidden; /* Prevent overall page scrolling */
+}
+
+body {
+  background-color: rgb(25, 25, 25); /* Dark background for the main page */
+  color: white; /* Default text color for the main layout */
+}
 
 /* HEADER */
-header {}
+header {
+  display: flex;
+  justify-content: space-between; /* Space between logo and date display */
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgb(4, 9, 29); /* Dark blue header background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: white; /* Ensure header text is white */
+}
 
-.logo {}
+header .logo { /* Target logo specifically in the main header */
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
 
-#app__title {}
+header .logo img { /* Target logo image specifically in the main header */
+  height: 32px;
+  margin-right: 10px;
+}
 
-.date__display {}
+#app__title { /* Ensure main app title is white */
+    color: white;
+}
 
-.day {}
+.date__display {
+  text-align: right;
+}
 
-.full__date {}
+.day {
+  font-weight: bold;
+}
 
-.container {}
+.full__date,
+#currentDate {
+  color: rgb(89, 82, 209); /* Accent color for date */
+}
+
+/* MAIN LAYOUT */
+.container {
+  display: flex;
+  height: calc(100vh - 67px); /* Subtract header height (approx 67px) */
+  overflow: hidden; /* Prevent container content from overflowing */
+} 
 
 
-/* SIDEBAR */
-.sidebar {}
+/* SIDEBAR PROFILE */
+.sidebar {
+  width: 250px;
+  min-width: 250px; /* Fixed width */
+  background: rgb(4, 9, 29); /* Dark blue sidebar background */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3); /* Shadow on the right */
+}
 
-.profile{}
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-.profile__img {}
+.profile__img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  border: 3px solid rgb(89, 82, 209); /* Accent border for profile image */
+}
 
-.profile__name {}
+.profile__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-.profile__email {}
+.profile__name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white; /* Ensure profile name is white */
+}
 
-.sidebar__buttons {}
+.profile__email {
+  font-size: 12px;
+  opacity: 0.8;
+  color: #bbb; /* Lighter color for email */
+}
 
 .sidebar__button {
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    transition: background-color 0.3s ease;
+  background-color: transparent; /* Default transparent background */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .sidebar__button:hover {
-    background-color: rgba(138, 43, 226, 0.2);
+    background-color: rgba(89, 82, 209, 0.2); /* Subtle hover effect */
 }
 
-.sidebar__button:active {
-    background-color: rgb(138, 43, 226);
+.sidebar__button.active {
+  background-color: rgb(89, 82, 209); /* Active button accent color */
 }
 
 /* MAIN CONTENT */
 .main__content {
     padding: 30px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start; /* no matter what they start from the top */
@@ -88,7 +179,7 @@ header {}
     height: 100%;
     background: linear-gradient(90deg, rgb(138, 43, 226), rgb(180, 80, 255)); /* filling up the bar in a gradient of colors */
     width: 0%;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease; /* smooth effect */
 }
 
 .habits__container {
@@ -148,4 +239,63 @@ header {}
 .habit__item.completed .habit__text { /* targeting the text as completed */
     text-decoration: line-through;
     opacity: 0.7;
+}
+
+
+.reset__button {
+    background-color: rgba(138, 43, 226, 0.1);
+    color: rgb(138, 43, 226);
+    border: 2px solid rgb(138, 43, 226);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.reset__button:hover {
+    background-color: rgb(138, 43, 226);
+    color: white;
+}
+
+.streak__display {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(138, 43, 226);
+    margin-bottom: 10px;
+}
+
+.progress__text {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.habits__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.habits__title {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+.add__habit--btn {
+    background-color: rgb(138, 43, 226);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease
+}
+
+.add__habit--btn:hover {
+    background-color: rgb(120, 30, 200);
 }
