@@ -1,0 +1,316 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Gabarito:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&family=Shrikhand&display=swap");
+
+/* BASIC RESET & BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gabarito", sans-serif;
+}
+
+body,
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: rgb(25, 25, 25);
+  color: white;
+}
+
+/* MAIN LAYOUT STRUCTURE */
+.container {
+  display: flex;
+  height: calc(100vh - 67px);
+  overflow: hidden;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  padding-top: 50px;
+  overflow: auto;
+}
+
+/* HEADER STYLES */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: rgb(4, 9, 29);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+header .logo::before {
+  content: "🌱";
+  margin-right: 10px;
+  font-size: 28px;
+}
+
+#app-title {
+  color: white;
+}
+
+/* DATE DISPLAY */
+.date-display {
+  text-align: right;
+}
+
+.day {
+  font-weight: bold;
+}
+
+.full-date,
+#currentDate {
+  color: rgb(138, 43, 226);
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+  background: rgb(4, 9, 29);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  border: 3px solid rgb(138, 43, 226);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background-color: rgb(35, 35, 35);
+}
+
+.profile-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.profile-email {
+  font-size: 12px;
+  opacity: 0.8;
+  color: #bbb;
+}
+
+.sidebar-button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover {
+  background-color: rgba(138, 43, 226, 0.2);
+}
+
+.sidebar-button.active {
+  background-color: rgb(138, 43, 226);
+}
+
+/** -----------------
+ JOSE PART HERE - HABIT TRACKER
+----------------- **/
+
+.main-content {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+.habit-tracker {
+    max-width: 600px;
+    width: 100%;
+    padding: 0;
+}
+
+.tracker-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(138, 43, 226);
+}
+
+.progress-section {
+    background-color: rgb(35, 35, 35);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.progress-bar {
+    background-color: rgb(60, 60, 60);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgb(138, 43, 226), rgb(180, 80, 255));
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.habits-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.habit-item {
+    background-color: rgb(35, 35, 35);
+    padding: 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.habit-item:hover {
+    background-color: rgb(45, 45, 45);
+}
+
+.habit-item.completed {
+    background-color: rgba(138, 43, 226, 0.2);
+    border-left: 4px solid rgb(138, 43, 226);
+}
+
+.habit-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(138, 43, 226);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.habit-checkbox.checked {
+    background-color: rgb(138, 43, 226);
+    color: white;
+}
+
+.habit-emoji {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.habit-text {
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.habit-item.completed .habit-text {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/** -----------------
+ JOSE ENDS HERE
+----------------- **/
+
+/** -----------------
+ ADRIAN STARTS HERE - HABIT TRACKER ADDITIONAL STYLES
+----------------- **/
+
+.reset-button {
+    background-color: rgba(138, 43, 226, 0.1);
+    color: rgb(138, 43, 226);
+    border: 2px solid rgb(138, 43, 226);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.reset-button:hover {
+    background-color: rgb(138, 43, 226);
+    color: white;
+}
+
+.streak-display {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(138, 43, 226);
+    margin-bottom: 10px;
+}
+
+.progress-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.habits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.habits-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+.add-habit-btn {
+    background-color: rgb(138, 43, 226);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.add-habit-btn:hover {
+    background-color: rgb(120, 30, 200);
+}

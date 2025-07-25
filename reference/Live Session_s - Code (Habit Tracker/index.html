@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habit Tracker Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <span id="app-title">Habit Tracker</span>
+      </div>
+      <div class="date-display">
+        <div class="day" id="currentDay">Today</div>
+        <div class="full-date" id="currentDate">01/01/2025</div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="sidebar">
+        <div class="profile">
+          <div class="profile-img">🌱</div>
+          <div class="profile-name" id="profileName">Habit Tracker</div>
+          <div class="profile-email" id="profileEmail">
+            habits@tracker.com
+          </div>
+        </div>
+        <div class="sidebar-buttons">
+          <button class="sidebar-button" data-section="taskList">
+            📋 Task List
+          </button>
+          <button class="sidebar-button" data-section="digitalVisionBoard">
+            📈 Digital Vision Board
+          </button>
+          <button class="sidebar-button" data-section="macroCalculator">
+            🧮 Macro Calculator
+          </button>
+          <button class="sidebar-button" data-section="workoutMealPlanner">
+            💪 Workout/Meal Planner
+          </button>
+          <button class="sidebar-button" data-section="monthlyTracker">
+            💰 Monthly Tracker
+          </button>
+          <button class="sidebar-button" data-section="moodTracker">
+            📈 Mood Tracker
+          </button>
+          <button class="sidebar-button" data-section="countdownTimer">
+            🕒 Countdown Timer
+          </button>
+          <button class="sidebar-button" data-section="qotdGenerator">
+            💬 QOTD Generator
+          </button>
+          <button class="sidebar-button" data-section="cityWeather">
+            🌞 City Weather
+          </button>
+          <button class="sidebar-button active" data-section="habitTracker">
+            🌱 Habit Tracker
+          </button>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="habit-tracker">
+          <h1 class="tracker-title">Daily Habit Tracker</h1>
+          
+          <div class="progress-section">
+            <div class="streak-display">Current Streak: <span id="streak">0</span> days</div>
+            <div class="progress-text">Today's Progress: <span id="progress-text">0/7 habits completed</span></div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="habits-header">
+            <h2 class="habits-title">Today's Habits</h2>
+            <button class="add-habit-btn" onclick="addCustomHabit()">+ Add Habit</button>
+          </div>
+
+          <div class="habits-container" id="habits-container">
+            <!-- Habits will be populated by JavaScript -->
+          </div>
+
+          <button class="reset-button" onclick="resetHabits()">Reset All Habits</button>
+        </div>
+      </div>
+    </div>
+
+    
+  </body>
+</html>

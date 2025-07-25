@@ -1,4 +1,4 @@
-
+// global variables should go on top
 
 function updateDate() {
   const now = new Date(); // means that it will never change where "let" can change
@@ -90,7 +90,7 @@ const defaultHabits = [
 
 // Load or retreive data from localStorage or use defaults
 let habits = JSON.parse(
-  // converting JSON to an object
+  // converting JSON strings back to an array
   localStorage.getItem("dailyHabits") || JSON.stringify(defaultHabits) // converting JSON to a string
 ); // let = going to change over time || = OR
 let streak = parseInt(localStorage.getItem("habitStreak") || "0"); // let the streak = 0 or the item habitStreak
@@ -98,7 +98,7 @@ let lastCompletedDate = localStorage.getItem("lastCompletedDate") || "";
 
 // Save data to localStorage
 function saveData() {
-  localStorage.setItem("dailyHabits", JSON.stringify(habits));
+  localStorage.setItem("dailyHabits", JSON.stringify(habits)); // needs to be a string to be saved to localStorage
   localStorage.setItem("habitStreak", streak.toString());
   localStorage.setItem("lastCompletedDate", lastCompletedDate);
 }
@@ -175,3 +175,101 @@ function updateProgress() {
       "linear-gradient(90deg, #8a2be2ff, #b450ffff)";
   }
 }
+
+// Add custom habit
+function addCustomHabit() {
+  const text = prompt("Enter your custom habit:");
+  if (text && text.trim()) {
+    const emojis = ["✨", "🎯", "🔥", "💪", "🚀", "⭐", "🌟", "💎", "🎉", "🏆"];
+    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)]; // 0.678 * 10 = 6.78 = 6 .floor rounds down
+
+    const newHabit = {
+      id: Date.now(),
+      emoji: randomEmoji,
+      text: text.trim(), // making sure no empty spaces
+      completed: false,
+      category: "custom",
+    };
+
+    habits.push(newHabit); // the habit just getting created will be pushed as a newHabit element to the "habits" in the localStorage
+    saveData();
+    renderHabits(); // turning this JS back into HTML adds default 7, as well
+
+    // Show success message
+    showMessage("New habit added successfully! 🥳");
+  }
+}
+
+// Delete custom habit
+function deleteHabit(id) {
+  if (confirm("Are you sure you want to delete this habit?")) {
+    habits = habits.filter((h) => h.id !== id);
+    saveData();
+    renderHabits();
+    showMessage("Habit deleted successfully! 🗑️");
+  }
+}
+
+// Reset habits function
+function resetHabits() {
+  if (confirm("Are you sure you want to reset all habits?")) {
+    habits = forEach((habit) => (habit.completed = false)); // going through all of the habits and checking if they are completed and changing it to false'not completed
+    saveData();
+    renderHabits();
+    showMessage("All habits reset! Ready for a fresh start! 🔁");
+  }
+}
+
+// Show celebration animation
+function showCelebration() {
+  const celebration = document.createElement("div"); // creating HTML
+  celebration.innerHTML = "🎊 All habits completed! Streak: " + streak + " days! 🎊";
+  celebration.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: bounce 0.5 ease-in-out;
+    `;
+  document.body.appendChild(celebration);
+  setTimeout(() =>)
+}
+
+// Show temporary message
+function showMessage(message) {
+  const messageDiv = document.createElement("div");
+  messageDiv.innerHTML = "🎊 All habits completed! Streak: " + streak + " days! 🎊";
+  celebration.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: bounce 0.5 ease-in-out;
+    `;
+  document.body.appendChild(celebration);
+  setTimeout(() =>)
+}
+
+// Initialize the app
+function initApp() {
+  updateDate();
+  renderHabits();
+
+  // Check if it's a new day and reset if needed
+  const today = new Date().toDateString();
+  const lastActiveDate = localStorage.getItem("lastActiveDate") || "";
+
+  if (lastActiveDate !== today) {
+    // if this runs it means it is a new day
+    habits.forEach((habit) => (habit.completed = false));
+    localStorage.setItem("lastActiveDate", today);
+    saveData();
+    renderHabits();
+  }
+}
+
+initApp();
+
+setInterval(updateDate, 60000) // in msec so only 6 min - to continuously check if the date has been updated
